@@ -1,6 +1,6 @@
 var container = document.getElementsByTagName('main')[0];
 
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
     if (sessionStorage.getItem('info')) {
         container.innerHTML = JSON.parse(sessionStorage.getItem('info'));
 
@@ -24,8 +24,8 @@ container.onclick = function createTimer(event) {
 
             buttonStart.textContent = 'stop';
 
-            container.insertAdjacentHTML('beforeEnd', '<button class="button button-reset">'
-                + 'reset</button><button class="button button-save">save</button>');
+            container.insertAdjacentHTML('beforeEnd', '<button class="button button-reset">' +
+                'reset</button><button class="button button-save">save</button>');
         } else if (buttonStart.dataset.state === 'run') {
             buttonStart.dataset.state = 'stop';
 
@@ -55,7 +55,6 @@ container.onclick = function createTimer(event) {
 
         if (buttonStart) {
             buttonStart.dataset.state = 'start';
-
             buttonStart.textContent = 'start';
         }
 
@@ -79,26 +78,26 @@ container.onclick = function createTimer(event) {
             var ind = document.getElementsByClassName('value-JS').length + 1;
 
             container.getElementsByClassName('value-wrapper')[0].insertAdjacentHTML('beforeEnd',
-                '<span class="value-JS">' + ind + '\) '
-                + document.getElementsByClassName('time-window')[0].textContent + ' : '
-                + document.getElementsByClassName('time-window')[1].textContent + ' : '
-                + document.getElementsByClassName('time-window')[2].textContent + '</span>');
+                '<span class="value-JS">' + ind + '\) ' +
+                document.getElementsByClassName('time-window')[0].textContent + ' : ' +
+                document.getElementsByClassName('time-window')[1].textContent + ' : ' +
+                document.getElementsByClassName('time-window')[2].textContent + '</span>');
         } else {
-            container.insertAdjacentHTML('beforeEnd', '<div class="value-wrapper">'
-                + '<span class="value-JS">1\) '
-                + document.getElementsByClassName('time-window')[0].textContent + ' : '
-                + document.getElementsByClassName('time-window')[1].textContent + ' : '
-                + document.getElementsByClassName('time-window')[2].textContent + '</span></div>');
+            container.insertAdjacentHTML('beforeEnd', '<div class="value-wrapper">' +
+                '<span class="value-JS">1\) ' +
+                document.getElementsByClassName('time-window')[0].textContent + ' : ' +
+                document.getElementsByClassName('time-window')[1].textContent + ' : ' +
+                document.getElementsByClassName('time-window')[2].textContent + '</span></div>');
         }
     }
 };
 
-window.addEventListener('beforeunload', function () {
+window.addEventListener('beforeunload', function() {
     sessionStorage.setItem('info', JSON.stringify(container.innerHTML));
 }, false);
 
 function setStopwatch(buttonStart, timeWindowArr) {
-    var timerId = setInterval(function () {
+    var timerId = setInterval(function() {
         if (buttonStart.dataset.state === 'run') {
             clearInterval(timerId);
         }
